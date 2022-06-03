@@ -1059,6 +1059,14 @@ void check_sim800_modem_ready(void)
           power_on = 0;
         }       
       }
+      
+      if(power_on == 0)
+      {
+        at_clear_rx_buffer();
+        at_receive();
+        HAL_Delay(10000);
+        
+      }
     
       if((HAL_GetTick()- start_time)> 45*1000)
       {
