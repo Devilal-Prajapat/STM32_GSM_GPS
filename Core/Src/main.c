@@ -95,7 +95,8 @@ char http_get_url[] = "AT+HTTPPARA=URL,http://361f-27-58-27-182.ngrok.io/gps/gps
 #else
 char http_get_url[] = "";
 //char http_url[] = "AT+HTTPPARA=URL,http://205.147.101.144:3888/vaishnav_tv/add_location\r\n";
-char http_url[] = "AT+HTTPPARA=URL,http://6198-117-99-161-242.ngrok.io/gps/gps.php\r\n";
+//char http_url[] = "AT+HTTPPARA=URL,http://6198-117-99-161-242.ngrok.io/gps/gps.php\r\n";
+char http_url[] = "AT+HTTPPARA=URL,http://needon.fluttertrends.com/api/location-store\r\n";
 #endif
 
 /* USER CODE END PV */
@@ -1013,8 +1014,9 @@ static void prepare_payload(void)
 #if TEST_URL
   payload_len = sprintf(payload,"data=lat:%.06f,lng:%.06f,from_input:%s,location:jaipur\r\n",latitude,longitude,imei);
 #else
-   latitude = latitude + 1.0f;
-  payload_len = sprintf(payload,"lat=%.06f&lng=%.06f&from_input=%s&location=jaipur\r\n",latitude,longitude,imei);
+   //latitude = latitude + 1.0f;
+  //payload_len = sprintf(payload,"lat=%.06f&lng=%.06f&from_input=%s&location=jaipur\r\n",latitude,longitude,imei);
+  payload_len = sprintf(payload,"latitude=%.06f&longitude=%.06f&device_name=%s&location=jaipur\r\n",latitude,longitude,imei);
 #endif  
 }
 
