@@ -556,10 +556,13 @@ void sim800_http_post(void)
             {
               at_state = AT_HTTPREAD_State;            
             }  
+            else if(strstr((char *)gsm_rx_buf,"\r\n+HTTPACTION: 1,301,")>0)
+            {
+              at_state = AT_HTTPTERM_State;               
+            }
             else if(strstr((char *)gsm_rx_buf,"\r\n+HTTPACTION: 1,601,")>0)
             {
-              at_state = AT_HTTPTERM_State; 
-              
+              at_state = AT_HTTPTERM_State;               
             }else
             {
               sim800_send_data = 0;
